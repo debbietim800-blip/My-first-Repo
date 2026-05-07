@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Fun Facts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .emoji {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .fact-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            font-size: 1.3em;
+            line-height: 1.6;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: bold;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .footer {
+            margin-top: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="emoji">🧠</div>
+        <h1>Fun Facts!</h1>
+        
+        <div class="fact-box" id="factBox">
+            Click the button to discover a fun fact!
+        </div>
+
+        <button onclick="getRandomFact()">Get Random Fun Fact 🎲</button>
+        
+        <div class="footer">
+            <p>Click the button to learn something amazing! ✨</p>
+        </div>
+    </div>
+
+    <script>
+        const funFacts = [
+            "Honey never spoils! Archaeologists have found 3,000-year-old honey in Egyptian tombs that was still edible.",
+            "Octopuses have three hearts: two pump blood to the gills, and one pumps blood to the rest of the body.",
+            "Bananas are berries, but strawberries aren't! Botanically speaking, bananas are berries and strawberries are not.",
+            "A group of flamingos is called a 'flamboyance'.",
+            "Honey is the only food that never goes bad. It can last thousands of years!",
+            "The shortest war in history lasted only 38 to 45 minutes between Britain and Zanzibar in 1896.",
+            "Butterflies taste with their feet to find out whether the leaf they sit on is good to lay eggs on.",
+            "A group of crows is called a 'murder'.",
+            "The Great Wall of China is not visible from space with the naked eye.",
+            "Sharks have been around longer than dinosaurs. They existed for over 200 million years before dinosaurs.",
+            "Cleopatra lived closer to the invention of the pizza than to the construction of the Great Pyramid.",
+            "A day on Venus is longer than a year on Venus!",
+            "Wombats have cube-shaped poop to mark their territory.",
+            "The smell of petrichor (rain on dry ground) comes from bacteria called actinomycetes.",
+            "Penguins have knees! They're hidden under their feathers.",
+            "Sloths only defecate once a week.",
+            "A group of pugs is called a 'grumble'.",
+            "The Eiffel Tower grows about 6 inches taller every summer due to thermal expansion.",
+            "Jellyfish have been around for over 500 million years, predating dinosaurs.",
+            "A cat's purr vibrates at a frequency that can help heal bones and reduce pain."
+        ];
+
+        function getRandomFact() {
+            const randomIndex = Math.floor(Math.random() * funFacts.length);
+            const factBox = document.getElementById('factBox');
+            
+            // Add animation effect
+            factBox.style.opacity = '0.5';
+            
+            setTimeout(() => {
+                factBox.textContent = funFacts[randomIndex];
+                factBox.style.opacity = '1';
+            }, 200);
+        }
+
+        // Display a random fact on page load
+        window.addEventListener('load', () => {
+            getRandomFact();
+        });
+
+        // Optional: Add CSS transition for smooth fade effect
+        const style = document.createElement('style');
+        style.textContent = `
+            #factBox {
+                transition: opacity 0.3s ease;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
